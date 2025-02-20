@@ -1,5 +1,6 @@
 import { useEffect, type FC } from 'react'
-import { Box, Loader, NoData } from 'vibe-library'
+import { Loader, NoData } from 'vibe-library'
+import JobsContainer from '@shared/ui/JobsContainer'
 import JobCard from '@features/JobCard'
 import useSearchJobsStore, { MINIMUM_SEARCH_QUERY_LENGTH } from '../../_state/useSearchJobsStore'
 
@@ -34,11 +35,11 @@ const Jobs: FC = () => {
     }
 
     return (
-        <Box ui={{ gap: 4, display: 'grid', cols: 3, xl: { cols: 2 }, md: { cols: 1 } }}>
+        <JobsContainer>
             {jobs.map((job) => (
                 <JobCard job={job} key={job.job_id} />
             ))}
-        </Box>
+        </JobsContainer>
     )
 }
 

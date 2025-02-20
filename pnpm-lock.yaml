@@ -18,8 +18,8 @@ dependencies:
     specifier: ^19.0.0
     version: 19.0.0(react@19.0.0)
   vibe-library:
-    specifier: ^0.0.12
-    version: 0.0.12(react-dom@19.0.0)(react@19.0.0)
+    specifier: ^0.0.13
+    version: 0.0.13(react-dom@19.0.0)(react@19.0.0)
   zustand:
     specifier: ^5.0.3
     version: 5.0.3(@types/react@18.2.78)(react@19.0.0)
@@ -4316,8 +4316,8 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
-  /vibe-library@0.0.12(react-dom@19.0.0)(react@19.0.0):
-    resolution: {integrity: sha512-Ktqvb4vtyAEnS6iEwkLsfkUL664/XjcVqUR7vaIVlWCd0Q8KhdGKlDHZruRvTdbe8V6rgIgs44dy831Ez7UCwg==}
+  /vibe-library@0.0.13(react-dom@19.0.0)(react@19.0.0):
+    resolution: {integrity: sha512-RWv/CSbxozrq2e8AF2XuSpns6UuqenScNFUhAscuUayzyc8eLH8VX+/3Pv6eYIW0QjW08AWkmhgpIfE+2Lu4Vg==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0

@@ -1,0 +1,23 @@
+@import 'app/_shared/const/variables';
+
+$headerHeight: 55px;
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-top: $headerHeight;
+}
+
+.main {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: $headerHeight;
+    background-color: $white100;
+    border-bottom: 1px solid $blue10p;
+}

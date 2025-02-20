@@ -1,7 +1,7 @@
 @import 'app/_shared/const/variables';
 
 .main {
-    background-color: $blue5p;
+    background-color: $black5p;
     border: 1px solid $black10p;
     border-radius: $point * 2;
 
@@ -9,7 +9,7 @@
         transition: background-color $transition;
 
         &:hover {
-            background-color: $blue10p;
+            background-color: $black10p;
         }
     }
 }

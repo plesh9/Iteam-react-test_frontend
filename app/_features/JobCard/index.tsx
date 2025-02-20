@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { FC } from 'react'
 import { Box, Button, Text, Title } from 'vibe-library'
 import ROUTES from '@shared/const/routes'
+import useLikedStore from '@shared/state/useLikedStore'
 import type { JobType } from '@shared/types/jobs'
 import ClampWrapper from '@shared/ui/ClampWrapper'
 import s from './JobCard.module.scss'
@@ -11,6 +12,9 @@ interface Props {
 }
 
 const JobCard: FC<Props> = ({ job }) => {
+    const isLiked = useLikedStore((state) => state.likedJobs.some((likedJob) => likedJob.job_id === job.job_id))
+    const addLikedJob = useLikedStore((state) => state.addLikedJob)
+    const removeLikedJo = useLikedStore((state) => state.removeLikedJob)
     const { job_title, job_description, job_min_salary, job_max_salary, job_salary_period, job_country, job_city, job_id } = job
 
     return (
@@ -35,14 +39,28 @@ const JobCard: FC<Props> = ({ job }) => {
             </Box>
 
             <Box ui={{ align: 'end' }}>
-                <Button
-                    onClick={(e) => {
-                        e.preventDefault()
-                    }}
-                    size='small'
-                >
-                    Save Job
-                </Button>
+                {isLiked ? (
+                    <Button
+                        onClick={(e) => {
+                            e.preventDefault()
+                            removeLikedJo(job)
+                        }}
+                        variant='secondary'
+                        size='small'
+                    >
+                        Unsave Job
+                    </Button>
+                ) : (
+                    <Button
+                        onClick={(e) => {
+                            e.preventDefault()
+                            addLikedJob(job)
+                        }}
+                        size='small'
+                    >
+                        Save Job
+                    </Button>
+                )}
             </Box>
         </Box>
     )
