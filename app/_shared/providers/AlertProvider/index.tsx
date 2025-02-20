@@ -24,7 +24,7 @@ const AlertComponent: FC<{ popup: PopupType }> = ({ popup }) => {
         <div className={classnames(s.main, s[popup.type], popup.isOpen ? s.opened : s.hidden)}>
             <div className={s.main_block}>
                 <Icon className={s.main_icon} name={popup.type} />
-                <Box direction='vertical' gap='2' grow>
+                <Box ui={{ gap: 2, grow: true }}>
                     {popup.title && (
                         <Text size='18' weight='500' lineHeight='100'>
                             {popup.title}
