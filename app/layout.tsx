@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
+import { AlertProvider } from '@shared/providers'
 import 'vibe-library/dist/assets/main.css'
 
 const geistSans = Geist({
@@ -19,7 +20,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='en'>
-            <body className={geistSans.variable}>{children}</body>
+            <body className={geistSans.variable}>
+                {children}
+                <AlertProvider />
+            </body>
         </html>
     )
 }

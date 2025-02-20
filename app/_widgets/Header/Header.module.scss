@@ -1,0 +1,9 @@
+@import 'app/_shared/const/variables';
+
+.main {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: $white100;
+    border-bottom: 1px solid $blue10p;
+}

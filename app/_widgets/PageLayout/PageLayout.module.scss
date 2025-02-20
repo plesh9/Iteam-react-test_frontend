@@ -1,0 +1,7 @@
+@import 'app/_shared/const/variables';
+
+.main {
+    width: 100%;
+    max-width: $point * 300;
+    margin-inline: auto;
+}

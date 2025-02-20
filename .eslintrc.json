@@ -1,6 +1,6 @@
 {
     "extends": ["next/core-web-vitals", "prettier"],
-    "plugins": ["react", "@typescript-eslint", "prettier", "eslint-plugin-import"],
+    "plugins": ["react", "@typescript-eslint", "prettier", "eslint-plugin-import", "unused-imports"],
     "rules": {
         "camelcase": "off",
         "no-console": "warn",
@@ -88,6 +88,16 @@
                     "order": "asc",
                     "caseInsensitive": true
                 }
+            }
+        ],
+        "unused-imports/no-unused-imports": "warn",
+        "unused-imports/no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "varsIgnorePattern": "^_",
+                "args": "after-used",
+                "argsIgnorePattern": "^_"
             }
         ]
     },
