@@ -2,9 +2,9 @@ import Link from 'next/link'
 import type { FC } from 'react'
 import { Box, Button, Text, Title } from 'vibe-library'
 import ROUTES from '@shared/const/routes'
-import useLikedStore from '@shared/state/useLikedStore'
 import type { JobType } from '@shared/types/jobs'
 import ClampWrapper from '@shared/ui/ClampWrapper'
+import LikeJobButton from '@features/LikeJobButton'
 import s from './JobCard.module.scss'
 
 interface Props {
@@ -12,9 +12,6 @@ interface Props {
 }
 
 const JobCard: FC<Props> = ({ job }) => {
-    const isLiked = useLikedStore((state) => state.likedJobs.some((likedJob) => likedJob.job_id === job.job_id))
-    const addLikedJob = useLikedStore((state) => state.addLikedJob)
-    const removeLikedJo = useLikedStore((state) => state.removeLikedJob)
     const { job_title, job_description, job_min_salary, job_max_salary, job_salary_period, job_country, job_city, job_id } = job
 
     return (
@@ -25,7 +22,7 @@ const JobCard: FC<Props> = ({ job }) => {
                         <Title variant='h2'>{job_title}</Title>
                     </ClampWrapper>
                     {job_min_salary && job_max_salary && job_salary_period && (
-                        <Title variant='h2' color='green500' lineHeight='140' noWrap>
+                        <Title variant='h3' color='green500' lineHeight='140' noWrap>
                             ${job_min_salary} - ${job_max_salary} / {job_salary_period.toLowerCase()}
                         </Title>
                     )}
@@ -38,29 +35,11 @@ const JobCard: FC<Props> = ({ job }) => {
                 </ClampWrapper>
             </Box>
 
-            <Box ui={{ align: 'end' }}>
-                {isLiked ? (
-                    <Button
-                        onClick={(e) => {
-                            e.preventDefault()
-                            removeLikedJo(job)
-                        }}
-                        variant='secondary'
-                        size='small'
-                    >
-                        Unsave Job
-                    </Button>
-                ) : (
-                    <Button
-                        onClick={(e) => {
-                            e.preventDefault()
-                            addLikedJob(job)
-                        }}
-                        size='small'
-                    >
-                        Save Job
-                    </Button>
-                )}
+            <Box ui={{ flexDirection: 'row', justify: 'end', align: 'center', gap: 2 }}>
+                <LikeJobButton job={job} />
+                <Button as='div' size='small'>
+                    View Details
+                </Button>
             </Box>
         </Box>
     )

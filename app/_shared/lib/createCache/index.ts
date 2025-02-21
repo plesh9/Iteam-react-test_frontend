@@ -41,8 +41,6 @@ const createCache = <TData, TVariables>(fetchFn: (variables: TVariables) => Prom
         cache.set(key, { data: updatedData, variables })
     }
 
-    cache.clear()
-
     return [getCachedData, updateCache] as const
 }
 

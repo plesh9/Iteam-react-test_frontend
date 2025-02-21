@@ -1,13 +1,13 @@
-import type { InputHTMLAttributes, ReactNode } from 'react'
+import type { ReactNode, TextareaHTMLAttributes } from 'react'
 import { forwardRef } from 'react'
 import { Box, classnames, Label, Text } from 'vibe-library'
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     error?: string | false
     label?: ReactNode
 }
 
-const Input = forwardRef<HTMLInputElement, Props>(({ className, name, error, label, ...restProps }, ref) => {
+const Textarea = forwardRef<HTMLTextAreaElement, Props>(({ className, name, error, label, ...restProps }, ref) => {
     return (
         <Box className={className} ui={{ width: '100%', gap: 1 }}>
             {label && (
@@ -15,7 +15,7 @@ const Input = forwardRef<HTMLInputElement, Props>(({ className, name, error, lab
                     {label}
                 </Label>
             )}
-            <input className={classnames(error && 'error_field')} ref={ref} name={name} {...restProps} />
+            <textarea className={classnames(error && 'error_field')} ref={ref} name={name} {...restProps} />
             {error && (
                 <Text size='12' color='red500'>
                     {error}
@@ -25,6 +25,6 @@ const Input = forwardRef<HTMLInputElement, Props>(({ className, name, error, lab
     )
 })
 
-Input.displayName = 'Input'
+Textarea.displayName = 'Textarea'
 
-export default Input
+export default Textarea

@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
+import type { FC, PropsWithChildren } from 'react'
 import { AlertProvider } from '@shared/providers'
-import 'vibe-library/dist/assets/main.css'
 import LickedJobsProvider from '@shared/providers/LickedJobsProvider'
+import UserProvider from '@shared/providers/UserProvider'
+import HeaderLayout from '@widgets/HeaderLayout'
+import 'vibe-library/dist/assets/main.css'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -14,17 +17,19 @@ export const metadata: Metadata = {
     description: 'Find your dream job'
 }
 
-export default function RootLayout({
-    children
-}: Readonly<{
-    children: React.ReactNode
-}>) {
+const layout: FC<PropsWithChildren> = ({ children }) => {
     return (
         <html lang='en'>
             <body className={geistSans.variable}>
-                <LickedJobsProvider>{children}</LickedJobsProvider>
+                <LickedJobsProvider>
+                    <UserProvider>
+                        <HeaderLayout>{children}</HeaderLayout>
+                    </UserProvider>
+                </LickedJobsProvider>
                 <AlertProvider />
             </body>
         </html>
     )
 }
+
+export default layout

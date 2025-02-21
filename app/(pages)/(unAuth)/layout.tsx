@@ -1,8 +1,8 @@
 import type { FC, PropsWithChildren } from 'react'
-import HeaderLayout from '@widgets/HeaderLayout'
+import { UnAuthProvider } from '@shared/providers/UnAuthProvider'
 
 const layout: FC<PropsWithChildren> = ({ children }) => {
-    return <HeaderLayout>{children}</HeaderLayout>
+    return <UnAuthProvider>{children}</UnAuthProvider>
 }
 
 export default layout
